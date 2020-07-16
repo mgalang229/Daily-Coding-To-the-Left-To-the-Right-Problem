@@ -1,42 +1,41 @@
 #include <bits/stdc++.h>
 
+#define REP(i,a,b) for (int i = a; i <= b; i++)
+
 using namespace std;
 
 void test_case() {
-	int a[100];
-	for(int i = 1; i <= 12; ++i) {
-		cin >> a[i];
+	int a[13];
+	REP(j, 1, 12) {
+		scanf("%d", &a[j]);
 	}
-	cout << a[1] << "\n";
 	int tmp = 1;
-	for(int i = 2; i <= 12; ++i) {
-		if(a[i] > a[i-1]) {
-			for(int j = 1; j <= tmp; ++j) {
-				cout << " ";
-			}
-			cout << a[i];
+	printf("%d\n", a[1]);
+	REP(j, 2, 12) {
+		if(a[j] > a[j-1]) {
+			REP(i, 1, tmp) {
+				printf(" ");
+			}	
+			printf("%d\n", a[j]);
 			tmp++;
 		}
-		else if(a[i] < a[i-1]) {
+		else if(a[j] < a[j-1]) {
 			tmp--;
-			for(int j = 1; j <= tmp - 1; ++j) {
-				cout << " ";
+			REP(i, 1, tmp - 1) {
+				printf(" ");
 			}
-			cout << a[i];
+			printf("%d\n", a[j]);
 		}
 		else {
-			for(int j = 1; j <= tmp - 1; ++j) {
-				cout << " ";
+			REP(i, 1, tmp - 1) {
+				printf(" ");
 			}
-			cout << a[i];
+			printf("%d\n", a[j]);
 		}
-		cout << "\n";
 	}
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
 	test_case();
 	return 0;
 }
